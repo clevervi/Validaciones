@@ -28,6 +28,7 @@ Un sistema interactivo que valida la edad del usuario y devuelve un mensaje pers
 
 ```
 /
+├── readme.md                   # Descripcion del proyecto
 ├── index.html                  # Contenedor principal
 └── sistema_interactivo.js      # Lógica de la aplicación
 ```
@@ -59,38 +60,7 @@ if (edad < 13) {
 - Agregar más categorías de edad
 - Internacionalización (multiidioma)
 
-## 🤝 ¿Cómo contribuir?
-
-1. Haz fork del proyecto
-2. Crea tu rama de feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Haz commit de tus cambios (`git commit -m 'Añade nueva funcionalidad'`)
-4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
-
-## 📜 Licencia
-
-MIT License. Ver archivo `LICENSE` para más detalles.
 
 ## ✉️ Contacto
 
 Desarrollado por Adrian Villegas
-```
-
-Este README.md incluye:
-
-1. Encabezado con badges modernos
-2. Sección de características mejor organizada
-3. Tecnologías claramente especificadas
-4. Estructura de proyecto simplificada
-5. Instrucciones de ejecución paso a paso
-6. Ejemplo claro de personalización
-7. Sección de posibles mejoras
-8. Guía de contribución estándar
-9. Información de licencia y contacto
-
-El diseño es más moderno que el anterior, con:
-- Badges actualizados
-- Mejor organización visual
-- Sección de "Mejoras posibles"
-- Lenguaje más conciso
-- Formato consistente
