@@ -1,4 +1,3 @@
-```markdown
 # Sistema de Validación de Edad con Mensajes Motivacionales
 
 ![HTML](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
