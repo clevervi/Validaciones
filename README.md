@@ -1,8 +1,5 @@
 # Sistema de Validación de Edad con Mensajes Motivacionales
 
-![HTML](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-
 Un sistema interactivo que valida la edad del usuario y devuelve un mensaje personalizado según su rango etario.
 
 ## 🌟 Características principales
