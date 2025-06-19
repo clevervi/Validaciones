@@ -1,46 +1,92 @@
 /**
- * Solicita y valida la edad del usuario.
- * Devuelve la edad como número entero o null si es inválida.
+ * Sistema Interactivo de Mensajes Motivacionales
+ * Versión mejorada que reutiliza los mensajes originales
  */
-function solicitarEdad() {
-    const edadIngresada = prompt("Por favor, ingresa tu edad (entre 1 y 120):");
-    if (!edadIngresada || !/^\d+$/.test(edadIngresada)) {
-        alert("Debes ingresar un número entero positivo.");
-        return null;
-    }
-    const edad = parseInt(edadIngresada, 10);
-    if (edad < 1 || edad > 120) {
-        alert("La edad debe estar entre 1 y 120 años.");
-        return null;
-    }
-    return edad;
+
+// Objeto que contiene los mensajes motivacionales organizados por grupo de edad
+const MENSAJES_MOTIVACIONALES = {
+  infantil: {
+    rango: [1, 12],
+    mensaje: (nombre) => `¡Hola${nombre}!\nA tu corta edad, cada día es una aventura. ¡Nunca dejes de explorar y aprender!`
+  },
+  adolescente: {
+    rango: [13, 17],
+    mensaje: (nombre) => `¡Hola${nombre}!\nEstás en una etapa clave para descubrir tus pasiones. ¡Aprovecha cada oportunidad y sigue adelante!`
+  },
+  joven: {
+    rango: [18, 29],
+    mensaje: (nombre) => `¡Hola${nombre}!\nLa juventud es el mejor momento para crear tu camino. ¡No temas a los retos y persigue tus sueños!`
+  },
+  adulto: {
+    rango: [30, 59],
+    mensaje: (nombre) => `¡Hola${nombre}!\nTu experiencia es valiosa. ¡Sigue creciendo y demuestra de lo que eres capaz!`
+  },
+  mayor: {
+    rango: [60, 120],
+    mensaje: (nombre) => `¡Hola${nombre}!\nTu sabiduría inspira a quienes te rodean. ¡La edad es solo un número para seguir aprendiendo!`
+  }
+};
+
+/**
+ * Valida si la entrada es un número entero dentro del rango permitido
+ */
+function validarEdad(edadIngresada) {
+  if (!edadIngresada || !/^\d+$/.test(edadIngresada)) {
+    return { valido: false, mensaje: "Debes ingresar un número entero positivo." };
+  }
+  
+  const edad = parseInt(edadIngresada, 10);
+  
+  if (edad < 1 || edad > 120) {
+    return { valido: false, mensaje: "La edad debe estar entre 1 y 120 años." };
+  }
+  
+  return { valido: true, edad };
 }
 
 /**
- * Devuelve un mensaje motivacional según la edad.
+ * Solicita la edad al usuario hasta que ingrese un valor válido
  */
-function mensajeMotivacional(nombre, edad) {
-    let nombreMostrar = nombre ? ` ${nombre}` : "";
-    if (edad < 13) {
-        return `¡Hola${nombreMostrar}!\nA tu corta edad, cada día es una aventura. ¡Nunca dejes de explorar y aprender!`;
-    } else if (edad < 18) {
-        return `¡Hola${nombreMostrar}!\nEstás en una etapa clave para descubrir tus pasiones. ¡Aprovecha cada oportunidad y sigue adelante!`;
-    } else if (edad < 30) {
-        return `¡Hola${nombreMostrar}!\nLa juventud es el mejor momento para crear tu camino. ¡No temas a los retos y persigue tus sueños!`;
-    } else if (edad < 60) {
-        return `¡Hola${nombreMostrar}!\nTu experiencia es valiosa. ¡Sigue creciendo y demuestra de lo que eres capaz!`;
-    } else {
-        return `¡Hola${nombreMostrar}!\nTu sabiduría inspira a quienes te rodean. ¡La edad es solo un número para seguir aprendiendo!`;
+function obtenerEdadValida() {
+  let resultado;
+  do {
+    const entrada = prompt("Por favor, ingresa tu edad (entre 1 y 120):");
+    resultado = validarEdad(entrada);
+    if (!resultado.valido) {
+      alert(resultado.mensaje);
     }
+  } while (!resultado.valido);
+  
+  return resultado.edad;
 }
 
-// Programa principal
-const nombreUsuario = prompt("¿Cómo te llamas? (opcional)");
+/**
+ * Determina el grupo de edad y devuelve el mensaje correspondiente
+ */
+function obtenerMensajeMotivacional(nombre, edad) {
+  const nombreMostrar = nombre ? ` ${nombre}` : "";
+  
+  for (const grupo in MENSAJES_MOTIVACIONALES) {
+    const [min, max] = MENSAJES_MOTIVACIONALES[grupo].rango;
+    if (edad >= min && edad <= max) {
+      return MENSAJES_MOTIVACIONALES[grupo].mensaje(nombreMostrar);
+    }
+  }
+  
+  // Mensaje por defecto (no debería ocurrir por la validación previa)
+  return `¡Hola${nombreMostrar}!\nGracias por compartir tu edad con nosotros. ¡Sigue adelante!`;
+}
 
-let edad;
-do {
-    edad = solicitarEdad();
-} while (edad === null);
+/**
+ * Función principal que orquesta el flujo del programa
+ */
+function iniciarSistemaInteractivo() {
+  const nombreUsuario = prompt("¿Cómo te llamas? (opcional)");
+  const edadUsuario = obtenerEdadValida();
+  const mensajeFinal = obtenerMensajeMotivacional(nombreUsuario, edadUsuario);
+  
+  alert(mensajeFinal);
+}
 
-// Mostrar mensaje motivacional
-alert(mensajeMotivacional(nombreUsuario, edad));
+// Iniciar el programa
+iniciarSistemaInteractivo();
