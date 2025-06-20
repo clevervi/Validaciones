@@ -1,66 +1,69 @@
-# Sistema de Validación de Edad con Mensajes Motivacionales
+# Age Validation System with Motivational Messages
 
-Un sistema interactivo que valida la edad del usuario y devuelve un mensaje personalizado según su rango etario.
+An interactive system that validates the user's age and returns a personalized message based on their age range.
 
-## 🌟 Características principales
+## 🌟 Key Features
 
-- **Validación de edad inteligente**:
-  - Solo acepta valores numéricos enteros
-  - Rango válido: 1-120 años
-  - Mensajes de error específicos para cada caso
+- **Smart age validation**:
+  - Only accepts whole numeric values
+  - Valid range: 1-120 years
+  - Specific error messages for each case
 
-- **Personalización**:
-  - Nombre opcional para mensajes personalizados
-  - 5 categorías de edad con mensajes únicos
+- **Personalization**:
+  - Optional name for customized messages
+  - 5 age categories with unique messages
 
-- **Experiencia de usuario**:
-  - Interfaz simple mediante ventanas emergentes nativas
-  - Validación en tiempo real
-  - Bucle hasta obtener entrada válida
+- **User experience**:
+  - Simple interface using native pop-up windows
+  - Real-time validation
+  - Loop until valid input is received
 
-## 🛠️ Tecnologías utilizadas
+## 🛠️ Technologies Used
 
 - **Frontend**:
   - HTML5
-  - JavaScript Vanilla (ES6)
+  - Vanilla JavaScript (ES6)
 
-## 📂 Estructura del proyecto
+## 📂 Project Structure
 
 ```
 /
-├── readme.md                   # Descripcion del proyecto
-├── index.html                  # Contenedor principal
-└── sistema_interactivo.js      # Lógica de la aplicación
+├── readme.md                   # Project description
+├── index.html                  # Main container
+└── interactive_system.js       # Application logic
 ```
 
-## 🚀 Cómo ejecutar
+## 🚀 How to Run
 
-1. Clona o descarga el repositorio
-2. Abre el archivo `index.html` en tu navegador web
-3. Sigue las instrucciones:
-   - Introduce tu nombre (opcional)
-   - Ingresa tu edad (número entre 1 y 120)
-4. Recibe tu mensaje motivacional personalizado
+1. Clone or download the repository
+2. Open the `index.html` file in your web browser
+3. Follow the instructions:
+   - Enter your name (optional)
+   - Input your age (number between 1 and 120)
+4. Receive your personalized motivational message
 
-## 🎨 Personalización
+## 🎨 Customization
 
-Para modificar los mensajes, edita la función `mensajeMotivacional`:
+To modify the messages, edit the `motivationalMessage` function:
 
 ```javascript
-// Ejemplo de modificación
-if (edad < 13) {
-    return `¡Hola${nombreMostrar}!\nNuevo mensaje personalizado aquí`;
+// Modification example
+if (age < 13) {
+    return `Hello${displayName}!\nNew personalized message here`;
 }
 ```
 
-## 📝 Mejoras posibles
+## 📝 Possible Improvements
 
-- Añadir interfaz gráfica más elaborada
-- Implementar persistencia de datos
-- Agregar más categorías de edad
-- Internacionalización (multiidioma)
+- Add a more elaborate graphical interface
+- Implement data persistence
+- Add more age categories
+- Internationalization (multi-language support)
 
+## ✉️ Contact
 
-## ✉️ Contacto
+Developed by Adrian Villegas
+4. Maintained the code structure and technical terms
+5. Adjusted some phrasing to sound more natural in English while preserving the original meaning
 
-Desarrollado por Adrian Villegas
+Would you like me to make any adjustments to this translation?
