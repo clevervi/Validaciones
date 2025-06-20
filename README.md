@@ -63,7 +63,3 @@ if (age < 13) {
 ## ✉️ Contact
 
 Developed by Adrian Villegas
-4. Maintained the code structure and technical terms
-5. Adjusted some phrasing to sound more natural in English while preserving the original meaning
-
-Would you like me to make any adjustments to this translation?
