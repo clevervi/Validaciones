@@ -1,92 +1,92 @@
 /**
- * Sistema Interactivo de Mensajes Motivacionales
- * Versión mejorada que reutiliza los mensajes originales
+ * Interactive Motivational Messages System
+ * Enhanced version that reuses the original messages
  */
 
-// Objeto que contiene los mensajes motivacionales organizados por grupo de edad
-const MENSAJES_MOTIVACIONALES = {
-  infantil: {
-    rango: [1, 12],
-    mensaje: (nombre) => `¡Hola${nombre}!\nA tu corta edad, cada día es una aventura. ¡Nunca dejes de explorar y aprender!`
+// Object containing motivational messages organized by age group
+const MOTIVATIONAL_MESSAGES = {
+  children: {
+    range: [1, 12],
+    message: (name) => `Hello${name}!\nAt your young age, every day is an adventure. Never stop exploring and learning!`
   },
-  adolescente: {
-    rango: [13, 17],
-    mensaje: (nombre) => `¡Hola${nombre}!\nEstás en una etapa clave para descubrir tus pasiones. ¡Aprovecha cada oportunidad y sigue adelante!`
+  teen: {
+    range: [13, 17],
+    message: (name) => `Hello${name}!\nYou're at a key stage to discover your passions. Take every opportunity and keep moving forward!`
   },
-  joven: {
-    rango: [18, 29],
-    mensaje: (nombre) => `¡Hola${nombre}!\nLa juventud es el mejor momento para crear tu camino. ¡No temas a los retos y persigue tus sueños!`
+  young: {
+    range: [18, 29],
+    message: (name) => `Hello${name}!\nYouth is the best time to create your path. Don't fear challenges and chase your dreams!`
   },
-  adulto: {
-    rango: [30, 59],
-    mensaje: (nombre) => `¡Hola${nombre}!\nTu experiencia es valiosa. ¡Sigue creciendo y demuestra de lo que eres capaz!`
+  adult: {
+    range: [30, 59],
+    message: (name) => `Hello${name}!\nYour experience is valuable. Keep growing and show what you're capable of!`
   },
-  mayor: {
-    rango: [60, 120],
-    mensaje: (nombre) => `¡Hola${nombre}!\nTu sabiduría inspira a quienes te rodean. ¡La edad es solo un número para seguir aprendiendo!`
+  senior: {
+    range: [60, 120],
+    message: (name) => `Hello${name}!\nYour wisdom inspires those around you. Age is just a number to keep learning!`
   }
 };
 
 /**
- * Valida si la entrada es un número entero dentro del rango permitido
+ * Validates if the input is a whole number within the allowed range
  */
-function validarEdad(edadIngresada) {
-  if (!edadIngresada || !/^\d+$/.test(edadIngresada)) {
-    return { valido: false, mensaje: "Debes ingresar un número entero positivo." };
+function validateAge(enteredAge) {
+  if (!enteredAge || !/^\d+$/.test(enteredAge)) {
+    return { valid: false, message: "Please enter a positive whole number." };
   }
   
-  const edad = parseInt(edadIngresada, 10);
+  const age = parseInt(enteredAge, 10);
   
-  if (edad < 1 || edad > 120) {
-    return { valido: false, mensaje: "La edad debe estar entre 1 y 120 años." };
+  if (age < 1 || age > 120) {
+    return { valid: false, message: "Age must be between 1 and 120 years." };
   }
   
-  return { valido: true, edad };
+  return { valid: true, age };
 }
 
 /**
- * Solicita la edad al usuario hasta que ingrese un valor válido
+ * Requests age from user until a valid value is entered
  */
-function obtenerEdadValida() {
-  let resultado;
+function getValidAge() {
+  let result;
   do {
-    const entrada = prompt("Por favor, ingresa tu edad (entre 1 y 120):");
-    resultado = validarEdad(entrada);
-    if (!resultado.valido) {
-      alert(resultado.mensaje);
+    const input = prompt("Please enter your age (between 1 and 120):");
+    result = validateAge(input);
+    if (!result.valid) {
+      alert(result.message);
     }
-  } while (!resultado.valido);
+  } while (!result.valid);
   
-  return resultado.edad;
+  return result.age;
 }
 
 /**
- * Determina el grupo de edad y devuelve el mensaje correspondiente
+ * Determines the age group and returns the corresponding message
  */
-function obtenerMensajeMotivacional(nombre, edad) {
-  const nombreMostrar = nombre ? ` ${nombre}` : "";
+function getMotivationalMessage(name, age) {
+  const displayName = name ? ` ${name}` : "";
   
-  for (const grupo in MENSAJES_MOTIVACIONALES) {
-    const [min, max] = MENSAJES_MOTIVACIONALES[grupo].rango;
-    if (edad >= min && edad <= max) {
-      return MENSAJES_MOTIVACIONALES[grupo].mensaje(nombreMostrar);
+  for (const group in MOTIVATIONAL_MESSAGES) {
+    const [min, max] = MOTIVATIONAL_MESSAGES[group].range;
+    if (age >= min && age <= max) {
+      return MOTIVATIONAL_MESSAGES[group].message(displayName);
     }
   }
   
-  // Mensaje por defecto (no debería ocurrir por la validación previa)
-  return `¡Hola${nombreMostrar}!\nGracias por compartir tu edad con nosotros. ¡Sigue adelante!`;
+  // Default message (shouldn't occur due to previous validation)
+  return `Hello${displayName}!\nThank you for sharing your age with us. Keep moving forward!`;
 }
 
 /**
- * Función principal que orquesta el flujo del programa
+ * Main function that orchestrates the program flow
  */
-function iniciarSistemaInteractivo() {
-  const nombreUsuario = prompt("¿Cómo te llamas? (opcional)");
-  const edadUsuario = obtenerEdadValida();
-  const mensajeFinal = obtenerMensajeMotivacional(nombreUsuario, edadUsuario);
+function startInteractiveSystem() {
+  const userName = prompt("What's your name? (optional)");
+  const userAge = getValidAge();
+  const finalMessage = getMotivationalMessage(userName, userAge);
   
-  alert(mensajeFinal);
+  alert(finalMessage);
 }
 
-// Iniciar el programa
-iniciarSistemaInteractivo();
+// Start the program
+startInteractiveSystem();
